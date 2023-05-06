@@ -158,6 +158,7 @@ public class MainWindow extends JFrame {
 		menuBar.add(mnNewMenu_2);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("sobre");
+		mntmNewMenuItem.addActionListener(this::sobre);
 		mnNewMenu_2.add(mntmNewMenuItem);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -813,7 +814,7 @@ public class MainWindow extends JFrame {
 		String semestre = semestreBox.getSelectedItem().toString();
 		float nota = Float.parseFloat(notasCombo.getSelectedItem().toString());
 		int faltas = (faltasTextNotas.getText().isBlank())?0:Integer.parseInt(faltasTextNotas.getText());
-		int id = Integer.parseInt(idNotasText.getText().isBlank()?"0":idNotasText.getText());
+		int id = Integer.parseInt(idNotasText.getText().isBlank()?"0":idNotasText.getText()	);
 
 		return new Nota(id, rgm, disciplina, semestre, nota, faltas);
 	}
@@ -995,6 +996,14 @@ public class MainWindow extends JFrame {
 		consultarNota(null);
 
 		tabbedPane.setSelectedIndex(2);
+	}
+
+	/**
+	 * Mostra a tela sobre, que informa sobre a existência do projeto
+	 * @param e objeto {@link ActionEvent} enviado pelo elemento que ativa a função
+	 */
+	public void sobre (ActionEvent e){
+		Sobre.aboutScreen();
 	}
 
 	/**
