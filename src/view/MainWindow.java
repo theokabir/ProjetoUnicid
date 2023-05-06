@@ -516,19 +516,19 @@ public class MainWindow extends JFrame {
 		boletimPanel.add(faltasTotal);
 		
 		JLabel lblNewLabel_2_1_1_2 = new JLabel("Média na disciplina: ");
-		lblNewLabel_2_1_1_2.setBounds(358, 223, 111, 14);
+		lblNewLabel_2_1_1_2.setBounds(358, 223, 133, 14);
 		boletimPanel.add(lblNewLabel_2_1_1_2);
 		
 		JLabel lblNewLabel_2_1_1_2_1 = new JLabel("Faltas na disciplina: ");
-		lblNewLabel_2_1_1_2_1.setBounds(358, 248, 111, 14);
+		lblNewLabel_2_1_1_2_1.setBounds(358, 248, 133, 14);
 		boletimPanel.add(lblNewLabel_2_1_1_2_1);
 		
 		mediaDisciplinaText = new JLabel("<>");
-		mediaDisciplinaText.setBounds(472, 223, 50, 14);
+		mediaDisciplinaText.setBounds(501, 223, 50, 14);
 		boletimPanel.add(mediaDisciplinaText);
 		
 		faltaDisciplinaText = new JLabel("<>");
-		faltaDisciplinaText.setBounds(472, 248, 50, 14);
+		faltaDisciplinaText.setBounds(501, 248, 50, 14);
 		boletimPanel.add(faltaDisciplinaText);
 		
 		JLabel lblNewLabel_1_3 = new JLabel("RGM");
@@ -813,7 +813,7 @@ public class MainWindow extends JFrame {
 		String semestre = semestreBox.getSelectedItem().toString();
 		float nota = Float.parseFloat(notasCombo.getSelectedItem().toString());
 		int faltas = (faltasTextNotas.getText().isBlank())?0:Integer.parseInt(faltasTextNotas.getText());
-		int id = Integer.parseInt(idNotasText.getText());
+		int id = Integer.parseInt(idNotasText.getText().isBlank()?"0":idNotasText.getText());
 
 		return new Nota(id, rgm, disciplina, semestre, nota, faltas);
 	}
