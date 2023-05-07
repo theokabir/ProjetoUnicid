@@ -137,7 +137,7 @@ public class AlunoDao {
 
             Messages.popup("Usuário Modificado");
         }catch(Exception e){
-            Messages.error("Erro ao exlcuir usuário");
+            Messages.error("Erro ao modificar usuário");
             System.out.println("ERRO:\n"+e.getMessage());
         }
     }

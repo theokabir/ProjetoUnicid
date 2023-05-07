@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 import java.util.Arrays;
@@ -647,8 +648,6 @@ public class MainWindow extends JFrame {
 		cursoBox.setSelectedItem((aluno.getCurso()==null)?Curso.NULO:Curso.get(aluno.getCurso()));
 		campusBox.setSelectedItem((aluno.getCampus()==null)?"Insira Campus":aluno.getCampus());
 
-
-
 		inserirPeriodo(aluno);
 
 		if(!aluno.getCurso().isBlank())
@@ -684,9 +683,7 @@ public class MainWindow extends JFrame {
 			switch (aluno.getPeriodo()){
 				case "Vespertino"->vespertinoRd.setSelected(true);
 				case "Noturno"->noturnoRd.setSelected(true);
-
 				// o valor defalut é o matutino
-
 				default ->matutinoRd.setSelected(true);
 			}
 		else
@@ -922,14 +919,13 @@ public class MainWindow extends JFrame {
 
 		if(aluno.getCurso() == null){
 			Messages.popup("Aluno não está cadastrado em nenhum curso");
+			return;
 		}
 
 		nomeBoletim.setText(String.format("%d - %s", aluno.getRgm(), aluno.getNome()));
 		cursoBoletim.setText(String.format("%s - %s - %s", aluno.getCurso(), aluno.getPeriodo(), aluno.getCampus()));
 
 		Disciplina[] disciplinas = notaDao.gerarBoletimBase(rgm, semestre);
-
-		System.out.println(disciplinas);
 
 		/*
 		Para garantir que as disciplinas sejam as disciplinas referentes ao
